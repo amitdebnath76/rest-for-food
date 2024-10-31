@@ -10,7 +10,7 @@ const Signup = () => {
       <h1 className="text-5xl font-bold">Sign Up Please!</h1>
       <p className="py-6">
        Already Have an Account? 
-       <h6><Link href='/login' className=' text-blue-700 text-2xl font-extrabold'>Log In</Link></h6>
+       <span><Link href='/login' className=' text-blue-700 text-2xl font-extrabold'>Log In</Link></span>
       </p>
     </div>
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
