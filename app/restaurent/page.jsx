@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import Login from '../_components/login/login'
+import Login from '../login/page'
 import { useState } from 'react';
-import Signup from '../_components/signup/signup';
+import Signup from '../signup/page';
 
 const Restaurent = () => {
     const [login,setLogin]= useState(true)

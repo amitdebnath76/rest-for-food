@@ -1,15 +1,16 @@
+import Link from 'next/link'
 import React from 'react'
 
-const Signup = () => {
+
+const Login = () => {
   return (
     <>
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-gradient-to-r from-sky-500 to-indigo-500 min-h-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Sign Up Please!</h1>
+      <h1 className="text-5xl font-bold">Login now!</h1>
       <p className="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
+        Do not have Account? <Link className=' text-blue-700 text-2xl font-extrabold' href="/signup">Sign Up</Link>
       </p>
     </div>
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -30,7 +31,7 @@ const Signup = () => {
           </label>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Sign Up</button>
+          <button className="btn btn-primary">Login</button>
         </div>
       </form>
     </div>
@@ -40,4 +41,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Login
