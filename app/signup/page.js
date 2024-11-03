@@ -11,8 +11,13 @@ const Signup = () => {
   const [address,setAddress] = useState('')
   const [contact,setContact] = useState('')
 
-const handelSignUp = ()=>{
+const handelSignUp = async ()=>{
   console.log(email,password,c_password,name,city,address,contact)
+  let result = await fetch('http://localhost:3000/api/restaurents');
+  method: 'POST';
+  body: JSON.stringify({email,password,name,city,address,contact});
+  result = await result.json();
+  console.log(result)
 }
 
   return (

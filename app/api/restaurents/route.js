@@ -7,6 +7,10 @@ export async function GET(){
     await mongoose.connect(connectionStr)
 
     const data = await restaurentSchema.find()
-    console.log(data)
+    // console.log(data)
     return NextResponse.json({result:data})
+}
+
+export async function POST() {
+    return NextResponse.json({result:true})
 }
