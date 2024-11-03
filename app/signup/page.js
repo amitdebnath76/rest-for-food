@@ -11,13 +11,20 @@ const Signup = () => {
   const [address,setAddress] = useState('')
   const [contact,setContact] = useState('')
 
-const handelSignUp = async ()=>{
+const handelSignUp = async (event)=>{
+  event.preventDefault()
   console.log(email,password,c_password,name,city,address,contact)
-  let result = await fetch('http://localhost:3000/api/restaurents');
-  method: 'POST';
-  body: JSON.stringify({email,password,name,city,address,contact});
+  let result = await fetch('http://localhost:3000/api/restaurents',{
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({email,password,name,city,address,contact})
+  });
+  
   result = await result.json();
   console.log(result)
+  if(result.success){
+    alert("Your Sign Up is Successful")
+  }
 }
 
   return (
@@ -37,7 +44,7 @@ const handelSignUp = async ()=>{
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input value={email} name='email' type="email" placeholder="email" className="input input-bordered" required 
+          <input value={email}  type="email" placeholder="email" className="input input-bordered" 
           onChange={(event)=>setEmail(event.target.value)}
           />
         </div>
@@ -45,7 +52,7 @@ const handelSignUp = async ()=>{
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input value={password} name='password' type="password" placeholder="password" className="input input-bordered" required 
+          <input value={password}  type="password" placeholder="password" className="input input-bordered" 
           onChange={(event)=>setPassword(event.target.value)}
           />
         </div>
@@ -53,7 +60,7 @@ const handelSignUp = async ()=>{
           <label className="label">
             <span className="label-text">Confirm Password</span>
           </label>
-          <input value={c_password} name='confirm-password' type="password" placeholder="Confirm Password" className="input input-bordered" required 
+          <input value={c_password}  type="password" placeholder="Confirm Password" className="input input-bordered" 
           onChange={(event)=>setC_pasword(event.target.value)}
           />
         </div>
@@ -61,7 +68,7 @@ const handelSignUp = async ()=>{
           <label className="label">
             <span className="label-text">Enter Restaurent Name</span>
           </label>
-          <input value={name} type="text" placeholder="Restaurent Name" className="input input-bordered" required 
+          <input value={name} type="text" placeholder="Restaurent Name" className="input input-bordered" 
           onChange={(event)=>setName(event.target.value)}
           
           />
@@ -70,7 +77,7 @@ const handelSignUp = async ()=>{
           <label className="label">
             <span className="label-text">Enter city</span>
           </label>
-          <input value={city} name='city-name' type="text" placeholder="City Name" className="input input-bordered" required 
+          <input value={city}  type="text" placeholder="City Name" className="input input-bordered" 
           onChange={(event)=>setCity(event.target.value)}
           
           />
@@ -79,7 +86,7 @@ const handelSignUp = async ()=>{
           <label className="label">
             <span className="label-text">Enter Full Address</span>
           </label>
-          <input value={address} name='full-address' type="text" placeholder="Full Address" className="input input-bordered" required 
+          <input value={address}  type="text" placeholder="Full Address" className="input input-bordered" 
           onChange={(event)=>setAddress(event.target.value)}
           
           />
@@ -88,7 +95,7 @@ const handelSignUp = async ()=>{
           <label className="label">
             <span className="label-text">Enter Contact Number</span>
           </label>
-          <input value={contact} name='contact-number' type="text" placeholder="Contact Number" className="input input-bordered" required 
+          <input value={contact}  type="text" placeholder="Contact Number" className="input input-bordered" 
           onChange={(event)=>setContact(event.target.value)}
           
           />
