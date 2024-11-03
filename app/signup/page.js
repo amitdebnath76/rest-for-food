@@ -24,6 +24,16 @@ const handelSignUp = async (event)=>{
   console.log(result)
   if(result.success){
     alert("Your Sign Up is Successful")
+    setEmail('')
+    setPassword('')
+    setC_pasword('')
+    setName('')
+    setCity('')
+    setAddress('')
+    setContact('')
+  }
+  else{
+    alert(result.message || "Signup failed. Please try again.")
   }
 }
 
