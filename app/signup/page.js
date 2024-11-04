@@ -1,5 +1,7 @@
 'use client'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
 import React, { useState } from 'react'
 
 const Signup = () => {
@@ -10,19 +12,22 @@ const Signup = () => {
   const [city,setCity] = useState('')
   const [address,setAddress] = useState('')
   const [contact,setContact] = useState('')
+  
+const router = useRouter()
 
 const handelSignUp = async (event)=>{
+  
   event.preventDefault()
   console.log(email,password,c_password,name,city,address,contact)
-  let result = await fetch('http://localhost:3000/api/restaurents',{
+  let fetchData = await fetch('http://localhost:3000/api/restaurents',{
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({email,password,name,city,address,contact})
   });
   
-  result = await result.json();
-  console.log(result)
-  if(result.success){
+  fetchData = await fetchData.json();
+  console.log(fetchData)
+  if(fetchData.success){
     alert("Your Sign Up is Successful")
     setEmail('')
     setPassword('')
@@ -33,7 +38,13 @@ const handelSignUp = async (event)=>{
     setContact('')
   }
   else{
-    alert(result.message || "Signup failed. Please try again.")
+    alert(fetchData.message || "Signup failed. Please try again.")
+  }
+  if (fetchData.success){
+    const{result}=fetchData;
+    delete result.password;
+    localStorage.setItem('restaurentUser',JSON.stringify(result))
+    router.push('/restaurent/Dashboard')
   }
 }
 
