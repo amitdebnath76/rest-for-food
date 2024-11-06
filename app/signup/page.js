@@ -41,7 +41,7 @@ const Signup = () => {
     }
 
     // Proceed to send data if validation passes
-    const fetchData = await fetch('http://localhost:3000/api/restaurants', {
+    const fetchData = await fetch('http://localhost:3000/api', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password, name, city, address, contact }),
